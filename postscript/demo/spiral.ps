@@ -1,0 +1,22 @@
+/inch {72 mul} def
+/spiral {
+/x exch def
+x sin x 0.8 mul mul %x value
+x cos x 0.8 mul mul %y value
+lineto
+} def
+/drawspiral {
+/c exch 1 exch 45 div sub def
+1 rotate
+1 c 1.2 mul sub %red
+c 0.5 lt {c 2 mul}{2 c 2 mul sub} ifelse %green
+c 4 mul 2 sub %blue
+setrgbcolor
+newpath
+0 0 moveto
+1 1 360 {spiral} for
+stroke
+} def
+
+4 inch 5.5 inch translate
+1 1 45 {drawspiral} for
